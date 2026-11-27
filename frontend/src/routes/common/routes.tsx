@@ -5,6 +5,7 @@ import SignUp from "@/pages/auth/sign-up";
 import Overview from "@/pages/overview";
 import Files from "@/pages/files";
 import APIKeys from "@/pages/apiKeys";
+import Docs from "@/pages/docs";
 
 export const authenticationRoutePaths = [
     { path: AUTH_ROUTES.SIGN_IN, element: <SignIn /> },
@@ -15,4 +16,5 @@ export const protectedRoutePaths = [
     { path: PROTECTED_ROUTES.OVERVIEW, element: <Overview /> },
     { path: PROTECTED_ROUTES.FILES, element: <Files /> },
     { path: PROTECTED_ROUTES.APIKEYS, element: <APIKeys /> },
+    { path: PROTECTED_ROUTES.DOCS, element: <Docs /> },
 ];
