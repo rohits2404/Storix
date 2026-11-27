@@ -6,6 +6,7 @@ import passport from "passport";
 import "./config/github.config.js";
 
 import { Env } from "./config/env.config.js";
+import { HTTPSTATUS } from "./config/http.config.js";
 
 import { asyncHandler } from "./middlewares/asyncHandler.middleware.js";
 import { errorHandler } from "./middlewares/errorHandler.middleware.js";
