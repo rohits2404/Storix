@@ -4,6 +4,7 @@ import helmet from "helmet";
 import cors from "cors";
 import { Env } from "./config/env.config.js";
 import { asyncHandler } from "./middlewares/asyncHandler.middleware.js";
+import { connectDB, disconnectDB } from "./config/database.config.js";
 
 const app = express();
 const allowedOrigins = Env.ALLOWED_ORIGINS.split(",").map((o) => o.trim());
@@ -37,6 +38,7 @@ app.get(
 
 async function startServer() {
     try {
+        await connectDB();
         const server = app.listen(Env.PORT, () => {
             console.info(
                 `Server Listening On Port ${Env.PORT} In ${Env.NODE_ENV} Mode`,
@@ -48,6 +50,7 @@ async function startServer() {
                 console.warn(`${signal} received: shutting down gracefully`);
                 try {
                     server.close(() => console.warn("HTTP Server Closed"));
+                    await disconnectDB();
                     process.exit(0);
                 } catch (error) {
                     console.error("Error Occurred During Shutdown", error);
