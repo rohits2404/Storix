@@ -21,11 +21,9 @@ export const getUserAnalyticsWithChartController = asyncHandler(
             req.user._id,
             filter,
         );
-        return res
-            .status(HTTPSTATUS.OK)
-            .json({
-                message: "User Analytics Retrieved Successfully",
-                ...result,
-            });
+        return res.status(HTTPSTATUS.OK).json({
+            message: "User Analytics Retrieved Successfully",
+            ...result,
+        });
     },
 );

@@ -50,6 +50,9 @@ export const loginService = async ({ email, password }) => {
     const row = rows[0];
     if (!row) throw new NotFoundException("Email/Password Not Found");
 
+    if (!row.password)
+        throw new UnauthorizedException("This Account Uses GitHub Sign In");
+
     const valid = await compareValue(password, row.password);
     if (!valid) throw new UnauthorizedException("Email/Password Is Incorrect");
 

@@ -3,6 +3,7 @@ import express from "express";
 import helmet from "helmet";
 import cors from "cors";
 import passport from "passport";
+import "./config/github.config.js";
 
 import { Env } from "./config/env.config.js";
 
