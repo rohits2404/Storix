@@ -1,0 +1,13 @@
+import crypto from "node:crypto";
+
+export const KEY_TYPE = { LIVE: "live" };
+
+export const hashApiKey = (rawKey) =>
+    crypto.createHash("sha256").update(rawKey).digest("hex");
+
+export function generateAPIKey(type = KEY_TYPE.LIVE) {
+    const secret = crypto.randomBytes(24).toString("hex");
+    const rawKey = `sk_${type}_${secret}`;
+    const displayKey = `sk_${type}_${secret.slice(0, 4)}...`;
+    return { rawKey, hashedKey: hashApiKey(rawKey), displayKey };
+}
